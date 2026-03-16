@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AylizDev | Links</title>
+    <!-- Lucide Icons için CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #6366f1, #a855f7, #ec4899 #d73939 #38c8f4);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-color);
+            overflow: hidden;
+        }
+
+        /* Arka plan animasyonu */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Giriş Ekranı (Splash Screen) */
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease-out, visibility 1s;
+        }
+
+        .splash-text {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 5px;
+            background: linear-gradient(to right, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulseFade 2.5s ease-in-out forwards;
+        }
+
+        @keyframes pulseFade {
+            0% { transform: scale(0.8); opacity: 0; filter: blur(10px); }
+            50% { transform: scale(1.1); opacity: 1; filter: blur(0px); }
+            100% { transform: scale(1); opacity: 0; filter: blur(10px); }
+        }
+
+        /* Ana İçerik */
+        #main-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            text-align: center;
+            display: none; /* Başlangıçta gizli */
+        }
+
+        .profile-section {
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--glass-border);
+            margin-bottom: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        /* Link Kartları */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 15px 25px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .link-card i {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Alt Kısım */
+        footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* Mobil Duyarlılık */
+         @media (max-width: 480px) {
+            .splash-text { font-size: 2.2rem; }
+            #main-content { 
+                width: 92%; 
+                padding: 10px;
+            }
+            .link-card {
+                padding: 15px 20px;
+            }
+            h1 { font-size: 1.3rem; }
+            p { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Havalı Giriş Ekranı -->
+    <div id="splash">
+        <div class="splash-text">AylizDev</div>
+    </div>
+
+    <!-- Ana Link Sayfası -->
+    <div id="main-content">
+        <div class="profile-section">
+            <!-- Profil Fotoğrafın (Github'dan çekiyoruz, istersen değiştirebilirsin) -->
+            <img src="https://github.com/merveayliz.png" alt="AylizDev" class="profile-img">
+            <h1>Ayliz Azaklı</h1>
+            <p>Web Design & Coding Student | AI Enthusiast</p>
+        </div>
+
+        <div class="links-container">
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/ayliz-azaklı-74579b318/" target="_blank" class="link-card">
+                <div class="link-info">
+                    <i data-lucide="linkedin"></i>
+                    <span>LinkedIn</span>
+                </div>
+                <i data-lucide="chevron-right"></i>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/merveayliz" target="_blank" class="link-card">
+                <div class="link-info">
+                    <i data-lucide="github"></i>
+                    <span>GitHub</span>
+                </div>
+                <i data-lucide="chevron-right"></i>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://youtube.com/@aylizdev" target="_blank" class="link-card">
+                <div class="link-info">
+                    <i data-lucide="youtube"></i>
+                    <span>YouTube</span>
+                </div>
+                <i data-lucide="chevron-right"></i>
+            </a>
+            
+            <!-- Portfolyo (Ekstra ekledim, istersen silebilirsin) -->
+            <a href="https://merveayliz.github.io/ayliz-dev-/" target="_blank" class="link-card">
+                <div class="link-info">
+                    <i data-lucide="globe"></i>
+                    <span>Portfolio</span>
+                </div>
+                <i data-lucide="chevron-right"></i>
+            </a>
+        </div>
+
+        <footer>
+            © 2026 AylizDev - Tasarım ve Kodlama
+        </footer>
+    </div>
+
+    <script>
+        // İkonları yükle
+        lucide.createIcons();
+
+        // Giriş animasyonu yönetimi
+        window.addEventListener('load', () => {
+            const splash = document.getElementById('splash');
+            const mainContent = document.getElementById('main-content');
+
+            // 2.5 saniye sonra splash ekranını kaldır ve içeriği getir
+            setTimeout(() => {
+                splash.style.opacity = '0';
+                splash.style.visibility = 'hidden';
+                
+                mainContent.style.display = 'block';
+                // Görünürlük için kısa bir gecikme (display:block sonrası transition çalışması için)
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                    mainContent.style.transform = 'translateY(0)';
+                }, 100);
+            }, 2500);
+        });
+    </script>
+</body>
+</html>
