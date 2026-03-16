@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AylizDev | Links</title>
-    <!-- Lucide Icons için CDN -->
+    
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
@@ -33,14 +33,12 @@
             overflow: hidden;
         }
 
-        /* Arka plan animasyonu */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Giriş Ekranı (Splash Screen) */
         #splash {
             position: fixed;
             top: 0;
@@ -72,7 +70,6 @@
             100% { transform: scale(1); opacity: 0; filter: blur(10px); }
         }
 
-        /* Ana İçerik */
         #main-content {
             opacity: 0;
             transform: translateY(20px);
@@ -81,7 +78,7 @@
             max-width: 400px;
             padding: 20px;
             text-align: center;
-            display: none; /* Başlangıçta gizli */
+            display: none; 
         }
 
         .profile-section {
@@ -109,7 +106,6 @@
             margin-bottom: 20px;
         }
 
-        /* Link Kartları */
         .links-container {
             display: flex;
             flex-direction: column;
@@ -150,14 +146,12 @@
             height: 24px;
         }
 
-        /* Alt Kısım */
         footer {
             margin-top: 40px;
             font-size: 0.8rem;
             opacity: 0.6;
         }
 
-        /* Mobil Duyarlılık */
          @media (max-width: 480px) {
             .splash-text { font-size: 2.2rem; }
             #main-content { 
@@ -174,22 +168,20 @@
 </head>
 <body>
 
-    <!-- Havalı Giriş Ekranı -->
     <div id="splash">
         <div class="splash-text">AylizDev</div>
     </div>
 
-    <!-- Ana Link Sayfası -->
     <div id="main-content">
         <div class="profile-section">
-            <!-- Profil Fotoğrafın (Github'dan çekiyoruz, istersen değiştirebilirsin) -->
+           
             <img src="https://github.com/merveayliz.png" alt="AylizDev" class="profile-img">
             <h1>Ayliz Azaklı</h1>
             <p>Web Design & Coding Student | AI Enthusiast</p>
         </div>
 
         <div class="links-container">
-            <!-- LinkedIn -->
+            
             <a href="https://www.linkedin.com/in/ayliz-azaklı-74579b318/" target="_blank" class="link-card">
                 <div class="link-info">
                     <i data-lucide="linkedin"></i>
@@ -198,7 +190,6 @@
                 <i data-lucide="chevron-right"></i>
             </a>
 
-            <!-- GitHub -->
             <a href="https://github.com/merveayliz" target="_blank" class="link-card">
                 <div class="link-info">
                     <i data-lucide="github"></i>
@@ -207,7 +198,7 @@
                 <i data-lucide="chevron-right"></i>
             </a>
 
-            <!-- YouTube -->
+           
             <a href="https://youtube.com/@aylizdev" target="_blank" class="link-card">
                 <div class="link-info">
                     <i data-lucide="youtube"></i>
@@ -216,7 +207,7 @@
                 <i data-lucide="chevron-right"></i>
             </a>
             
-            <!-- Portfolyo (Ekstra ekledim, istersen silebilirsin) -->
+            
             <a href="https://merveayliz.github.io/ayliz-dev-/" target="_blank" class="link-card">
                 <div class="link-info">
                     <i data-lucide="globe"></i>
@@ -232,21 +223,19 @@
     </div>
 
     <script>
-        // İkonları yükle
+       
         lucide.createIcons();
 
-        // Giriş animasyonu yönetimi
+   
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash');
             const mainContent = document.getElementById('main-content');
 
-            // 2.5 saniye sonra splash ekranını kaldır ve içeriği getir
             setTimeout(() => {
                 splash.style.opacity = '0';
                 splash.style.visibility = 'hidden';
                 
                 mainContent.style.display = 'block';
-                // Görünürlük için kısa bir gecikme (display:block sonrası transition çalışması için)
                 setTimeout(() => {
                     mainContent.style.opacity = '1';
                     mainContent.style.transform = 'translateY(0)';
