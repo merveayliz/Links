@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #6366f1, #a855f7, #ec4899 #d73939 #38c8f4);
+            --bg-gradient: linear-gradient(135deg, #6366f1, #a855f7, #ec4899, #d73939, #38c8f4);
             --glass-bg: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
             --text-color: #ffffff;
@@ -19,6 +19,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -30,7 +31,9 @@
             justify-content: center;
             align-items: center;
             color: var(--text-color);
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 40px 0;
         }
 
         @keyframes gradientBG {
@@ -50,7 +53,13 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            transition: opacity 1s ease-out, visibility 1s;
+            transition: opacity 0.8s ease-out, visibility 0.8s;
+        }
+
+        #splash.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
         .splash-text {
@@ -62,6 +71,7 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: pulseFade 2.5s ease-in-out forwards;
+            text-align: center;
         }
 
         @keyframes pulseFade {
@@ -72,13 +82,14 @@
 
         #main-content {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease-out;
-            width: 100%;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            width: 90%;
             max-width: 400px;
             padding: 20px;
             text-align: center;
             display: none; 
+            margin: auto;
         }
 
         .profile-section {
@@ -96,43 +107,49 @@
         }
 
         h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 5px;
+            font-weight: 700;
         }
 
         p {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.95rem;
+            opacity: 0.9;
             margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
+            width: 100%;
         }
 
         .link-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            padding: 15px 25px;
-            border-radius: 16px;
+            padding: 18px 25px;
+            border-radius: 20px;
             text-decoration: none;
             color: white;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+        }
+
+        .link-card:active {
+            transform: scale(0.96);
         }
 
         .link-card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .link-info {
@@ -147,12 +164,13 @@
         }
 
         footer {
-            margin-top: 40px;
-            font-size: 0.8rem;
-            opacity: 0.6;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            opacity: 0.7;
         }
 
-         @media (max-width: 480px) {
+        @media (max-width: 480px) {
             .splash-text { font-size: 2.2rem; }
             #main-content { 
                 width: 92%; 
@@ -174,14 +192,13 @@
 
     <div id="main-content">
         <div class="profile-section">
-           
             <img src="https://github.com/merveayliz.png" alt="AylizDev" class="profile-img">
             <h1>Ayliz Azaklı</h1>
-            <p>Web Design & Coding Student | AI Enthusiast</p>
+            <p>Web Design & Coding Student<br>AI Enthusiast</p>
         </div>
 
         <div class="links-container">
-            
+           
             <a href="https://www.linkedin.com/in/ayliz-azaklı-74579b318/" target="_blank" class="link-card">
                 <div class="link-info">
                     <i data-lucide="linkedin"></i>
@@ -198,7 +215,6 @@
                 <i data-lucide="chevron-right"></i>
             </a>
 
-           
             <a href="https://youtube.com/@aylizdev" target="_blank" class="link-card">
                 <div class="link-info">
                     <i data-lucide="youtube"></i>
@@ -206,7 +222,6 @@
                 </div>
                 <i data-lucide="chevron-right"></i>
             </a>
-            
             
             <a href="https://merveayliz.github.io/ayliz-dev-/" target="_blank" class="link-card">
                 <div class="link-info">
@@ -223,23 +238,21 @@
     </div>
 
     <script>
-       
         lucide.createIcons();
-
-   
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash');
             const mainContent = document.getElementById('main-content');
 
             setTimeout(() => {
-                splash.style.opacity = '0';
-                splash.style.visibility = 'hidden';
+                splash.classList.add('fade-out');
                 
                 mainContent.style.display = 'block';
+                
                 setTimeout(() => {
                     mainContent.style.opacity = '1';
                     mainContent.style.transform = 'translateY(0)';
                 }, 100);
+
             }, 2500);
         });
     </script>
