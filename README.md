@@ -22,7 +22,7 @@ A modern, responsive, and minimalist "Link in Bio" landing page built with pure 
 ### 🚀 Live Demo
 
 Check out the live project here:  
-👉 [AylizDev Links](https://merveayliz.github.io/ayliz-dev-/) *(or your specific repo link)*
+👉 [AylizDev Links]([https://merveayliz.github.io/ayliz-dev-/](https://merveayliz.github.io/Links/)) *(or your specific repo link)*
 
 ---
 
